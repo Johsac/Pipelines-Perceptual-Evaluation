@@ -1,64 +1,47 @@
-# Multimodal-Perceptual-Evaluation
-[![DOI](https://zenodo.org/badge/774352023.svg)](https://doi.org/10.5281/zenodo.14206744)
+# Pipelines Perceptual Evaluation
 
-Welcome to the Multimodal Perceptual Evaluation repository! This repository houses the code necessary to set up and execute perceptual evaluations encompassing diverse media forms (currently supporting video evaluation). Powered by Python Flask, the evaluation system manages server-client interactions, facilitating user participation both locally and online.
+This repository contains a Flask-based web application for conducting multimodal perceptual evaluations, specifically for comparing video stimuli using MUSHRA and AB testing methodologies.
 
-The evaluation framework offers versatile templates, supporting various evaluation methodologies including MUSHRA-like tests, AB testing, and single-stimulus evaluations.
+## Project Structure
+- **app.py**: Main Flask application handling session management, experiment flow, and result storage in local CSV files.
+- **config/**: Contains experiment configuration (`experiment.py`).
+- **data/**: Stores video files for evaluation (not tracked in Git).
+- **results/**: Stores participant results as CSV files (not tracked in Git).
+- **sessionlogs/**: Stores session logs as JSON files (not tracked in Git).
+- **styles/**: CSS styles for the web interface.
+- **templates/**: HTML templates for the experiment pages.
+- **figs/**: Example images for MUSHRA and AB interfaces.
 
-Key features include automatic experiment randomization, participant session tracking, and logging and storage of evaluation results.
+## Setup
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd Multimodal-Perceptual-Evaluation
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Ensure the `data/` directory contains the required video files in subfolders (`llm`, `llm_DiT`, `ref_high`, `ref_low`).
+4. Run the application:
+   ```bash
+   python app.py
+   ```
+5. Access the experiment at `http://localhost:5000`.
 
-<img src="figs/MUSHRA-example.png" width="700" />
+## Requirements
+- Python 3.x
+- Flask
+- Pandas
+- NumPy
 
-<img src="figs/AB-example.png" width="700" />
+See `requirements.txt` for a complete list.
 
-## FAQ
+## Usage
+- The application presents an initial page (`index.html`) to start a new session.
+- Participants complete MUSHRA and AB tests as configured in `config/experiment.py`.
+- Results are saved locally in the `results/` directory as CSV files.
 
-**How can I use this code?**
-
-Clone or download this repository. The code has been tested on a standard Anaconda installation and should run using it. Run the application using:
-```shell
-python app.py
-```
-
-and access http://127.0.0.1:5000/ using your browser.
-
-**What browser should I use?**
-
-This evaluation has been thoroughly tested on Google Chrome and appears to work fine on Microsoft Edge. However, some issues with a previous version of this code have been reported in Firefox and Safari.
-
-**Where can I host this evaluation?**
-
-The code utilizes Flask (Python) along with standard web frameworks (JavaScript, CSS, HTML). It has been thoroughly tested and performed well on [PythonAnywhere](https://www.pythonanywhere.com/).
-
-## Contribute
-
-Want to contribute? Feel free to create pull requests and issues for bugs and small improvements.
-
-**Are you a student or researcher of the [Artificial Intelligence for Multimodal Signal Processing](https://github.com/ai-unicamp)** 
-- ... and want to adapt this repository to your research? Please ensure that you're part of the AI-Unicamp organization on GitHub. Create a new branch in this repository to make your modifications. Please refrain from using the main branch for your research to keep it clear and easy to use for everyone.
-- ... and want to contribute with improvements and bug fixes? Please avoid making commits directly to the main branch. Instead, follow these best practices:
-    - Create feature branches for each new change or improvement.
-    - Submit pull requests to merge your changes into the main branch.
-    - Please avoid making commits directly to the main branch.
-    - Don't submit broken or incomplete features.
-    - Encourage code reviews for all pull requests to maintain code quality.
-    - Provide clear documentation on what changed.
-
-## Featured in
-
-List of all works, research papers and thesis featuring the Multimodal Perceptual Evaluation:
-
-- Work in progress...
-
-## Contact
-
-This project was created and it is maintaned by students and researchers of the [Artificial Intelligence for Multimodal Signal Processing](https://github.com/ai-unicamp) from [Unicamp](https://www.unicamp.br/en). Feel free to contact Professor [Paula Dornhofer Paro Costa](https://pdpcosta.github.io/).
-
-## Reference
-
-If you find this library useful, please consider acknowledging it in your work.
-[![DOI](https://zenodo.org/badge/774352023.svg)](https://doi.org/10.5281/zenodo.14206744)
-
-This library was inspired mainly by [webMUSHRA](https://github.com/audiolabs/webMUSHRA) and [HEMVIP](https://github.com/jonepatr/hemvip).
-
-
+## License
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+   cd Pipelines-Perceptual-Evaluation

@@ -36,599 +36,134 @@
 #             Create a new stimulus by adding a new key-value pair to the dictionary.
 #             Note: Some modes require a specific number of stimuli. Check the template for each mode.
 
-
 HL_1 = {
     'Config': {
         'Mode': 'MUSHRA',
         'Random' : True,
-        'Name': 'id01_p01_e03_f11_01000_15000',
+        'Name': 'id_004',
     },
-    'gt'   : 'data/HL/gt/id01_p01_e03_f11_01000_15000.mp4',
-    'ptbr' : 'data/HL/ptbr/id01_p01_e03_f11_01000_15000.mp4',
-    'zeggs': 'data/HL/zeggs/id01_p01_e03_f11_01000_15000.mp4',
-}
+    'llm'   : 'data/llm/id_004.mp4',
+    'llm_DiT' : 'data/llm_DiT/id_004.mp4',
+    'ref_low' : 'data/ref_low/id_004.mp4', 
+    'ref_high': 'data/ref_high/id_004.mp4',
+}   
 
 HL_2 = {
     'Config': {
         'Mode': 'MUSHRA',
         'Random' : True,
-        'Name': 'id01_p01_e03_f11_15000_25000',
+        'Name': 'id_005',
     },
-    'gt'   : 'data/HL/gt/id01_p01_e03_f11_15000_25000.mp4',
-    'ptbr' : 'data/HL/ptbr/id01_p01_e03_f11_15000_25000.mp4',
-    'zeggs': 'data/HL/zeggs/id01_p01_e03_f11_15000_25000.mp4',
+    'llm'   : 'data/llm/id_005.mp4',
+    'llm_DiT' : 'data/llm_DiT/id_005.mp4',
+    'ref_low' : 'data/ref_low/id_005.mp4', 
+    'ref_high': 'data/ref_high/id_005.mp4',
 }
 
 HL_3 = {
     'Config': {
         'Mode': 'MUSHRA',
         'Random' : True,
-        'Name': 'id01_p01_e03_f21_500_11000',
+        'Name': 'id_006',
     },
-    'gt'   : 'data/HL/gt/id01_p01_e03_f21_500_11000.mp4',
-    'ptbr' : 'data/HL/ptbr/id01_p01_e03_f21_500_11000.mp4',
-    'zeggs': 'data/HL/zeggs/id01_p01_e03_f21_500_11000.mp4',
+    'llm'   : 'data/llm/id_006.mp4',
+    'llm_DiT' : 'data/llm_DiT/id_006.mp4',
+    'ref_low' : 'data/ref_low/id_006.mp4',
+    'ref_high': 'data/ref_high/id_006.mp4',
 }
 
 HL_4 = {
     'Config': {
         'Mode': 'MUSHRA',
         'Random' : True,
-        'Name': 'id01_p01_e03_f26_01000_13000',
+        'Name': 'id_010',
     },
-    'gt'   : 'data/HL/gt/id01_p01_e03_f26_01000_13000.mp4',
-    'ptbr' : 'data/HL/ptbr/id01_p01_e03_f26_01000_13000.mp4',
-    'zeggs': 'data/HL/zeggs/id01_p01_e03_f26_01000_13000.mp4',
+    'llm'   : 'data/llm/id_010.mp4',
+    'llm_DiT' : 'data/llm_DiT/id_010.mp4',
+    'ref_low' : 'data/ref_low/id_010.mp4', 
+    'ref_high': 'data/ref_high/id_010.mp4',
 }
 
 HL_5 = {
     'Config': {
         'Mode': 'MUSHRA',
         'Random' : True,
-        'Name': 'id02_p01_e03_f06_01500_11500',
+        'Name': 'id_017',
     },
-    'gt'   : 'data/HL/gt/id02_p01_e03_f06_01500_11500.mp4',
-    'ptbr' : 'data/HL/ptbr/id02_p01_e03_f06_01500_11500.mp4',
-    'zeggs': 'data/HL/zeggs/id02_p01_e03_f06_01500_11500.mp4',
+    'llm'   : 'data/llm/id_017.mp4',
+    'llm_DiT' : 'data/llm_DiT/id_017.mp4',
+    'ref_low' : 'data/ref_low/id_017.mp4', 
+    'ref_high': 'data/ref_high/id_017.mp4',
 }
 
 HL_6 = {
     'Config': {
         'Mode': 'MUSHRA',
         'Random' : True,
-        'Name': 'id02_p01_e03_f16_01000_13000',
+        'Name': 'id_040',
     },
-    'gt'   : 'data/HL/gt/id02_p01_e03_f16_01000_13000.mp4',
-    'ptbr' : 'data/HL/ptbr/id02_p01_e03_f16_01000_13000.mp4',
-    'zeggs': 'data/HL/zeggs/id02_p01_e03_f16_01000_13000.mp4',
+    'llm'   : 'data/llm/id_040.mp4',
+    'llm_DiT' : 'data/llm_DiT/id_040.mp4',
+    'ref_low' : 'data/ref_low/id_040.mp4', 
+    'ref_high': 'data/ref_high/id_040.mp4',
 }
 
 HL_7 = {
     'Config': {
         'Mode': 'MUSHRA',
         'Random' : True,
-        'Name': 'id02_p01_e03_f21_02500_18475',
+        'Name': 'id_049',
     },
-    'gt'   : 'data/HL/gt/id02_p01_e03_f21_02500_18475.mp4',
-    'ptbr' : 'data/HL/ptbr/id02_p01_e03_f21_02500_18475.mp4',
-    'zeggs': 'data/HL/zeggs/id02_p01_e03_f21_02500_18475.mp4',
+    'llm'   : 'data/llm/id_049.mp4',
+    'llm_DiT' : 'data/llm_DiT/id_049.mp4',
+    'ref_low' : 'data/ref_low/id_049.mp4', 
+    'ref_high': 'data/ref_high/id_049.mp4',
 }
 
 HL_8 = {
     'Config': {
         'Mode': 'MUSHRA',
         'Random' : True,
-        'Name': 'id02_p01_e03_f31_01000_16000',
+        'Name': 'id_057',
     },
-    'gt'   : 'data/HL/gt/id02_p01_e03_f31_01000_16000.mp4',
-    'ptbr' : 'data/HL/ptbr/id02_p01_e03_f31_01000_16000.mp4',
-    'zeggs': 'data/HL/zeggs/id02_p01_e03_f31_01000_16000.mp4',
-}
-
-APP_1 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'ptbr_id01_p01_e03_f21_11000_23000',
-    },
-    'Matched': 'data/APP/ptbr/Matched_id01_p01_e03_f21_11000_23000.mp4',
-    'Mismatched': 'data/APP/ptbr/Mismatched_id01_p01_e03_f21_11000_23000.mp4',
-}
-
-APP_2 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'ptbr_id01_p01_e03_f31_16500_29500',
-    },
-    'Matched': 'data/APP/ptbr/Matched_id01_p01_e03_f31_16500_29500.mp4',
-    'Mismatched': 'data/APP/ptbr/Mismatched_id01_p01_e03_f31_16500_29500.mp4',
-}
-
-APP_3 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'ptbr_id01_p01_e03_f41_500_12000',
-    },
-    'Matched': 'data/APP/ptbr/Matched_id01_p01_e03_f41_500_12000.mp4',
-    'Mismatched': 'data/APP/ptbr/Mismatched_id01_p01_e03_f41_500_12000.mp4',
-}
-
-APP_4 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'ptbr_id02_p01_e03_f16_500_11000',
-    },
-    'Matched': 'data/APP/ptbr/Matched_id02_p01_e03_f16_500_11000.mp4',
-    'Mismatched': 'data/APP/ptbr/Mismatched_id02_p01_e03_f16_500_11000.mp4',
-}
-
-APP_5 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'ptbr_id02_p01_e03_f26_01500_17500',
-    },
-    'Matched': 'data/APP/ptbr/Matched_id02_p01_e03_f26_01500_17500.mp4',
-    'Mismatched': 'data/APP/ptbr/Mismatched_id02_p01_e03_f26_01500_17500.mp4',
-}
-
-APP_6 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'ptbr_id02_p01_e03_f36_01500_19200',
-    },
-    'Matched': 'data/APP/ptbr/Matched_id02_p01_e03_f36_01500_19200.mp4',
-    'Mismatched': 'data/APP/ptbr/Mismatched_id02_p01_e03_f36_01500_19200.mp4',
-}
-
-APP_7 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'zeggs_id01_p01_e03_f21_11000_23000',
-    },
-    'Matched': 'data/APP/zeggs/Matched_id01_p01_e03_f21_11000_23000.mp4',
-    'Mismatched': 'data/APP/zeggs/Mismatched_id01_p01_e03_f21_11000_23000.mp4',
-}
-
-APP_8 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'zeggs_id01_p01_e03_f31_16500_29500',
-    },
-    'Matched': 'data/APP/zeggs/Matched_id01_p01_e03_f31_16500_29500.mp4',
-    'Mismatched': 'data/APP/zeggs/Mismatched_id01_p01_e03_f31_16500_29500.mp4',
-}
-
-APP_9 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'zeggs_id01_p01_e03_f41_500_12000',
-    },
-    'Matched': 'data/APP/zeggs/Matched_id01_p01_e03_f41_500_12000.mp4',
-    'Mismatched': 'data/APP/zeggs/Mismatched_id01_p01_e03_f41_500_12000.mp4',
-}
-
-APP_10 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'zeggs_id02_p01_e03_f16_500_11000',
-    },
-    'Matched': 'data/APP/zeggs/Matched_id02_p01_e03_f16_500_11000.mp4',
-    'Mismatched': 'data/APP/zeggs/Mismatched_id02_p01_e03_f16_500_11000.mp4',
-}
-
-APP_11 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'zeggs_id02_p01_e03_f26_01500_17500',
-    },
-    'Matched': 'data/APP/zeggs/Matched_id02_p01_e03_f26_01500_17500.mp4',
-    'Mismatched': 'data/APP/zeggs/Mismatched_id02_p01_e03_f26_01500_17500.mp4',
-}
-
-APP_12 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'zeggs_id02_p01_e03_f36_01500_19200',
-    },
-    'Matched': 'data/APP/zeggs/Matched_id02_p01_e03_f36_01500_19200.mp4',
-    'Mismatched': 'data/APP/zeggs/Mismatched_id02_p01_e03_f36_01500_19200.mp4',
-}
-
-APP_13 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'gt_id01_p01_e03_f21_11000_23000',
-    },
-    'Matched': 'data/APP/gt/Matched_id01_p01_e03_f21_11000_23000.mp4',
-    'Mismatched': 'data/APP/gt/Mismatched_id01_p01_e03_f21_11000_23000.mp4',
-}
-
-APP_14 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'gt_id01_p01_e03_f31_16500_29500',
-    },
-    'Matched': 'data/APP/gt/Matched_id01_p01_e03_f31_16500_29500.mp4',
-    'Mismatched': 'data/APP/gt/Mismatched_id01_p01_e03_f31_16500_29500.mp4',
-}
-
-APP_15 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'gt_id01_p01_e03_f41_500_12000',
-    },
-    'Matched': 'data/APP/gt/Matched_id01_p01_e03_f41_500_12000.mp4',
-    'Mismatched': 'data/APP/gt/Mismatched_id01_p01_e03_f41_500_12000.mp4',
-}
-
-APP_16 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'gt_id02_p01_e03_f16_500_11000',
-    },
-    'Matched': 'data/APP/gt/Matched_id02_p01_e03_f16_500_11000.mp4',
-    'Mismatched': 'data/APP/gt/Mismatched_id02_p01_e03_f16_500_11000.mp4',
-}
-
-APP_17 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'gt_id02_p01_e03_f26_01500_17500',
-    },
-    'Matched': 'data/APP/gt/Matched_id02_p01_e03_f26_01500_17500.mp4',
-    'Mismatched': 'data/APP/gt/Mismatched_id02_p01_e03_f26_01500_17500.mp4',
-}
-
-APP_18 = {
-    'Config': {
-        'Mode': 'AB',
-        'Random' : True,
-        'Name': 'gt_id02_p01_e03_f36_01500_19200',
-    },
-    'Matched': 'data/APP/gt/Matched_id02_p01_e03_f36_01500_19200.mp4',
-    'Mismatched': 'data/APP/gt/Mismatched_id02_p01_e03_f36_01500_19200.mp4',
+    'llm'   : 'data/llm/id_057.mp4',
+    'llm_DiT' : 'data/llm_DiT/id_057.mp4',
+    'ref_low' : 'data/ref_low/id_057.mp4', 
+    'ref_high': 'data/ref_high/id_057.mp4',
 }
 
 
-PER_1 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'ptbr_PER1_id01_e01',
-    },
-    'id01_e01': 'data/PER/ptbr/PER1_id01_p01_e01_f21_00500_14500.mp4',
-}
+import itertools
 
-PER_2 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'ptbr_PER2_id01_e02',
-    },
-    'id01_e02': 'data/PER/ptbr/PER2_id01_p01_e02_f11_01000_16000.mp4',
-}
 
-PER_3 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'ptbr_PER3_id01_e03',
-    },
-    'id01_e03': 'data/PER/ptbr/PER3_d01_p01_e03_f16_00500_14000.mp4',
-}
+# --- Definiciones de AB (Appropriateness) - GENERADAS AUTOMÁTICAMENTE ---
+VIDEO_CATEGORIES = ['llm', 'llm_DiT', 'ref_low', 'ref_high']
+#VIDEO_IDS = ['id_004', 'id_005', 'id_006', 'id_010', 'id_017', 'id_040', 'id_049', 'id_057']
+VIDEO_IDS = ['id_010', 'id_017', 'id_040', 'id_049']
 
-PER_4 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'ptbr_PER1_id02_e01',
-    },
-    'id02_e01': 'data/PER/ptbr/PER1_id02_p01_e01_f36_08000_25000.mp4',
-}
+# Generar todas las combinaciones únicas de dos categorías
+CATEGORY_COMBINATIONS = list(itertools.combinations(VIDEO_CATEGORIES, 2))
 
-PER_5 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'ptbr_PER1_id02_e02',
-    },
-    'id02_e02': 'data/PER/ptbr/PER2_id02_p01_e02_f41_01000_16000.mp4',
-}
+# Lista para almacenar los nombres de las variables APP_X
+APP_LIST = []
+APP_COUNTER = 1
 
-PER_6 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'ptbr_PER1_id02_e03',
-    },
-    'id02_e03': 'data/PER/ptbr/PER3_id02_p01_e03_f31_01500_13500.mp4',
-}
+for video_id in VIDEO_IDS:
+    for cat1, cat2 in CATEGORY_COMBINATIONS:
+        # Crea una variable global con el nombre APP_X
+        # Esto permite que EXPERIMENT['Part2'] contenga referencias a estas variables
+        globals()[f'APP_{APP_COUNTER}'] = {
+            'Config': {
+                'Mode': 'AB',
+                'Random': True,
+                'Name': f'{cat1}_vs_{cat2}_{video_id}', # Nombre descriptivo de la comparación
+            },
+            'VideoA': f'data/{cat1}/{video_id}.mp4', # Video A
+            'VideoB': f'data/{cat2}/{video_id}.mp4', # Video B
+        }
+        APP_LIST.append(f'APP_{APP_COUNTER}')
+        APP_COUNTER += 1
 
-PER_7 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'zeggs_PER1_id01_e01',
-    },
-    'id01_e01': 'data/PER/zeggs/PER1_id01_p01_e01_f41_01000_13000.mp4',
-}
-
-PER_8 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'zeggs_PER2_id01_e02',
-    },
-    'id01_e02': 'data/PER/zeggs/PER2_id01_p01_e02_f31_02000_14000.mp4',
-}
-
-PER_9 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'zeggs_PER3_id01_e03',
-    },
-    'id01_e03': 'data/PER/zeggs/PER3_id01_p01_e03_f21_01000_13000.mp4',
-}
-
-PER_10 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'zeggs_PER1_id02_e01',
-    },
-    'id02_e01': 'data/PER/zeggs/PER1_id02_p01_e01_f26_01000_11000.mp4',
-}
-
-PER_11 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'zeggs_PER1_id02_e02',
-    },
-    'id02_e02': 'data/PER/zeggs/PER2_id02_p01_e02_f06_02000_13000.mp4',
-}
-
-PER_12 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'zeggs_PER1_id02_e03',
-    },
-    'id02_e03': 'data/PER/zeggs/PER3_id02_p01_e03_f01_01000_13000.mp4',
-}
-
-PER_13 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'gt_PER1_id01_e01',
-    },
-    'id01_e01': 'data/PER/gt/PER1_id01_p01_e01_f16_0500_10500.mp4',
-}
-
-PER_14 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'gt_PER2_id01_e02',
-    },
-    'id01_e02': 'data/PER/gt/PER2_id01_p01_e02_f26_01000_13000.mp4',
-}
-
-PER_15 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'gt_PER3_id01_e03',
-    },
-    'id01_e03': 'data/PER/gt/PER3_id01_p01_e03_f01_01000_13000.mp4',
-}
-
-PER_16 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'gt_PER1_id02_e01',
-    },
-    'id02_e01': 'data/PER/gt/PER1_id02_p01_e01_f06_01000_11000.mp4',
-}
-
-PER_17 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'gt_PER1_id02_e02',
-    },
-    'id02_e02': 'data/PER/gt/PER2_id02_p01_e02_f36_02000_14000.mp4',
-}
-
-PER_18 = {
-    'Config': {
-        'Mode': 'Single_v2',
-        'Random' : True,
-        'Name': 'gt_PER1_id02_e03',
-    },
-    'id02_e03': 'data/PER/gt/PER3_id02_p01_e03_f21_01500_11500.mp4',
-}
-
-EST_1 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'ptbr_id01_e01',
-    },
-    'ptbr_id01_p02_e01_f00': 'data/EST/ptbr/id01_p02_e01_f00.mp4',
-}
-
-EST_2 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'ptbr_id01_e02',
-    },
-    'ptbr_id01_p02_e02_f27': 'data/EST/ptbr/id01_p02_e02_f27.mp4',
-}
-
-EST_3 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'ptbr_id01_e03',
-    },
-    'ptbr_id01_p02_e03_f12': 'data/EST/ptbr/id01_p02_e03_f12.mp4',
-}
-
-EST_4 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'ptbr_id02_e01',
-    },
-    'ptbr_id02_p02_e01_f15': 'data/EST/ptbr/id02_p02_e01_f15.mp4',
-}
-
-EST_5 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'ptbr_id02_e02',
-    },
-    'ptbr_id02_p02_e02_f48': 'data/EST/ptbr/id02_p02_e02_f48.mp4',
-}
-
-EST_6 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'ptbr_id02_e03',
-    },
-    'ptbr_id02_p02_e03_f09_01000_18000': 'data/EST/ptbr/id02_p02_e03_f09_01000_18000.mp4',
-}
-
-EST_7 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'zeggs_id01_e01',
-    },
-    'zeggs_id01_p02_e01_f00': 'data/EST/zeggs/id01_p02_e01_f00.mp4',
-}
-
-EST_8 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'zeggs_id01_e02',
-    },
-    'zeggs_id01_p02_e02_f27': 'data/EST/zeggs/id01_p02_e02_f27.mp4',
-}
-
-EST_9 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'zeggs_id01_e03',
-    },
-    'zeggs_id01_p02_e03_f12': 'data/EST/zeggs/id01_p02_e03_f12.mp4',
-}
-
-EST_10 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'zeggs_id02_e01',
-    },
-    'zeggs_id02_p02_e01_f15': 'data/EST/zeggs/id02_p02_e01_f15.mp4',
-}
-
-EST_11 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'zeggs_id02_e02',
-    },
-    'zeggs_id02_p02_e02_f48': 'data/EST/zeggs/id02_p02_e02_f48.mp4',
-}
-
-EST_12 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'zeggs_id02_e03',
-    },
-    'zeggs_id02_p02_e03_f09_01000_18000': 'data/EST/zeggs/id02_p02_e03_f09_01000_18000.mp4',
-}
-
-EST_13 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'gt_id01_e01',
-    },
-    'gt_id01_p02_e01_f00': 'data/EST/gt/id01_p02_e01_f00.mp4',
-}
-
-EST_14 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'gt_id01_e02',
-    },
-    'gt_id01_p02_e02_f27': 'data/EST/gt/id01_p02_e02_f27.mp4',
-}
-
-EST_15 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'gt_id01_e03',
-    },
-    'gt_id01_p02_e03_f12': 'data/EST/gt/id01_p02_e03_f12.mp4',
-}
-
-EST_16 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'gt_id02_e01',
-    },
-    'gt_id02_p02_e01_f15': 'data/EST/gt/id02_p02_e01_f15.mp4',
-}
-
-EST_17 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'gt_id02_e02',
-    },
-    'gt_id02_p02_e02_f48': 'data/EST/gt/id02_p02_e02_f48.mp4',
-}
-
-EST_18 = {
-    'Config': {
-        'Mode': 'Single',
-        'Random' : True,
-        'Name': 'gt_id02_e03',
-    },
-    'gt_id02_p02_e03_f09_01000_18000': 'data/EST/gt/id02_p02_e03_f09_01000_18000.mp4',
-}
 
 EXPERIMENT = {
     'Config'      : {
@@ -636,20 +171,13 @@ EXPERIMENT = {
         'Random_page' : True,
         'VideoSource' : 'local', # youtube or local
     },
-    'Part1'          : [HL_1, HL_2, HL_3, HL_4, HL_5, HL_6, HL_7, HL_8],
-    'Part2'          : [APP_1, APP_2, APP_3, APP_4, APP_5, APP_6, APP_7, APP_8, APP_9, APP_10, APP_11, APP_12, APP_13, APP_14, APP_15, APP_16, APP_17, APP_18],
-    'Part3'          : [PER_1, PER_2, PER_3, PER_4, PER_5, PER_6, PER_7, PER_8, PER_9, PER_10, PER_11, PER_12, PER_13, PER_14, PER_15, PER_16, PER_17, PER_18],
-    'Part4'          : [EST_1, EST_2, EST_3, EST_4, EST_5, EST_6, EST_7, EST_8, EST_9, EST_10, EST_11, EST_12, EST_13, EST_14, EST_15, EST_16, EST_17, EST_18],
-    # For debugging:
-    #'Part1'          : [HL_1],
-    #Part2'           : [APP_1],
-    #'Part3'          : [PER_1],
-    #'Part4'          : [EST_1],
+    'Part1'           : [HL_1, HL_2, HL_3, HL_4, HL_5, HL_6, HL_7, HL_8],
+    'Part2'           : [globals()[app_name] for app_name in APP_LIST], # Usa la lista generada
+    # Para depuración, puedes usar subconjuntos:
+    # 'Part1'          : [HL_1],
+    # 'Part2'          : [globals()['APP_1']], # Solo un ejemplo, si solo quieres la primera APP generada
 }
 
-
-# Use this if using embedded youtube videos
-# VIDEO_PARAMS = '?autoplay=0&controls=0&mute=0&loop=0&start=0&end=0&rel=0&modestbranding=1&showinfo=0&enablejsapi=1&color=red'
 
 # Use this if using youtube API
 VIDEO_PARAMS = { 'autoplay': 0,
@@ -665,3 +193,4 @@ VIDEO_PARAMS = { 'autoplay': 0,
                    'rel': 0,
                    'showinfo': 0,
                  }
+

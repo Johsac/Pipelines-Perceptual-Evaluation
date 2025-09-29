@@ -1,3 +1,12 @@
+# Directories
 results/*
-data/*
 sessionlogs/*
+__pycache__/
+*.pyc
+
+# Sensitive files
+gestureevaluation-0aa5a9abbafa.json
+
+# Backup files
+app_v1.py
+app_gg.py

@@ -18,19 +18,7 @@
         <div id="player"></div>
     </div>
 
-    Assita os três vídeos e avalie o movimento de cada um deles. <br>
-
-    <h2>Quão natural é o movimento?</h2>
-
-    <!--
-    <div class="video-feedback red-rounded-box">
-        
-        <h2>Choose Video</h2>
-    </div>
-
-    <div class="statement-box red-rounded-box">
-        <h2>How does the video make you feel?</h2>
-    </div>-->
+    Assista os três vídeos e avalie o movimento de cada um deles. <br> <h2>Quão natural é o movimento?</h2>
 
     <div id="sliders-container" class="slider-container white-rounded-box">
         
@@ -70,7 +58,6 @@
             <div class="video-buttons">
                 <button id="videoBtn1" class="videoBtn">Play</button>
             </div>
-            <!-- <label for="video1-feedback">Rate Video 1:</label> -->
             <input type="range" id="video1-feedback" name="video1-feedback" min="0" max="100" step="1" value="50">
             <div class="score-box" id="score-video1">Razoável</div>
         </div>
@@ -87,7 +74,6 @@
             <div class="video-buttons">
                 <button id="videoBtn2" class="videoBtn">Play</button>
             </div>
-            <!-- <label for="video2-feedback">Rate Video 2:</label> -->
             <input type="range" id="video2-feedback" name="video2-feedback" min="0" max="100" step="1" value="50">
             <div class="score-box" id="score-video2">Razoável</div>
         </div>
@@ -104,11 +90,26 @@
             <div class="video-buttons">
                 <button id="videoBtn3" class="videoBtn">Play</button>
             </div>
-            <!-- <label for="video3-feedback">Rate Video 3:</label> -->
             <input type="range" id="video3-feedback" name="video3-feedback" min="0" max="100" step="1" value="50">
             <div class="score-box" id="score-video3">Razoável</div>
         </div>
-    </div>
+        <div class="slider-wrapper">
+            Video 4:
+
+            <hr style="position: absolute; top: 108px; left: 0; width: 100%; height: 1px; background-color: black;">
+            <hr style="position: absolute; top: 134px; left: 0; width: 100%; height: 1px; background-color: black;">
+            <hr style="position: absolute; top: 160px; left: 0; width: 100%; height: 1px; background-color: black;">
+            <hr style="position: absolute; top: 186px; left: 0; width: 100%; height: 1px; background-color: black;">
+            <hr style="position: absolute; top: 212px; left: 0; width: 100%; height: 1px; background-color: black;">
+            <hr style="position: absolute; top: 238px; left: 0; width: 100%; height: 1px; background-color: black;">
+
+            <div class="video-buttons">
+                <button id="videoBtn4" class="videoBtn">Play</button>
+            </div>
+            <input type="range" id="video4-feedback" name="video4-feedback" min="0" max="100" step="1" value="50">
+            <div class="score-box" id="score-video4">Razoável</div>
+        </div>
+        </div>
 
     <div id="next-page-btn-container" class="red-rounded-box">
         <button id="nextPageBtn">Próximo</button>
@@ -119,7 +120,7 @@
 
         var myData = {{ data|tojson|safe }};
 
-        document.getElementById('page_number').innerHTML = myData.PageNumber + '/' + myData.PageTotal + ' ' + myData.Part + '/4';
+        document.getElementById('page_number').innerHTML = myData.PageNumber + '/' + myData.PageTotal + ' ' + myData.Part + '/2';
 
         console.log(myData);
 
@@ -135,6 +136,7 @@
                 'video1': 50,
                 'video2': 50,
                 'video3': 50,
+                'video4': 50, // Initialize score for the fourth video
             };
 
             if (myData.VSource === 'local') {
@@ -263,6 +265,7 @@
                 });
             }
 
+            // Save scores to a file
             function saveScoresToFile() {
                 var scoresJSON = JSON.stringify(videoScores, null, 2);
                 var blob = new Blob([scoresJSON], { type: 'text/plain' });
@@ -280,6 +283,7 @@
                 return;
             }
             console.log('YouTube API is ready!');
+            console.log(player);
             player = new YT.Player('player', {
                 height: '315',
                 width: '560',
@@ -298,8 +302,8 @@
             video.controls = false;
             video.loop = false;
             video.muted = true;
-            video.width = 560;
-            video.height = 315;
+            video.width = 760;
+            video.height = 515;
             video.preload = 'auto';
             video.controlsList.add('nodownload');
         }

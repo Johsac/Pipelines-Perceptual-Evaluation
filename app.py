@@ -3,7 +3,13 @@ import json
 import numpy as np
 import random
 import datetime
+import os
+import pandas as pd  
 from config.experiment import *
+
+# Initialize directories
+os.makedirs('results', exist_ok=True)
+os.makedirs('sessionlogs', exist_ok=True)
 
 # Initialize the Flask application
 app = Flask(__name__)  
@@ -19,6 +25,7 @@ app.register_blueprint(data_bp)
 
 START = None
 
+# Initialize the session
 def sessionPlanner():
     """
     Create a session based on the experiment parameters defined in /config/experiment.py
@@ -94,32 +101,29 @@ def getCurrentPage():
     """
     if len(session['RECORDED']) > 0:
         return session['RECORDED'][-1]
-    return None
+    return None 
     
 def page2dict(page):
-    """
-    Convert page to dictionary to be used in the HTML templates.
-    This info is sent to javascript to render the page.
-    """
     if page:
         page_number = len([p for p in session['RECORDED'] if p[1] == page[1]])
+        video_left_folder = os.path.basename(os.path.dirname(page[4][0][1])) # Obtiene la carpeta del video izquierdo
+        video_right_folder = os.path.basename(os.path.dirname(page[4][1][1])) # Obtiene la carpeta del video derecho
         return dict(
-                {
-                'Page ID'    : page[0], # Number of the page in the experiment
-                'Part'       : page[1], # Part of the experiment
-                'Test'       : page[2], # Page name
-                'Mode'       : page[3], # Type (mode) of page
-                'VSource'    : EXPERIMENT['Config']['VideoSource'], # Source of the videos (local or youtube)
-                'VConfig'    : VIDEO_PARAMS, # Video parameters such as controls, autoplay, etc
-                'PageNumber' : page_number, # Number of the Page in the Part
-                'PageTotal'  : len(EXPERIMENT[page[1]]), # Total number of Pages in the Part
-                }, 
-                # Create a dictionary for each stimulus in the page
-                # The first dict is the stimulus number and its name
-                **{'S'+str(i+1)  : stimulus[0]  for i, stimulus in enumerate(page[4])},
-                # The second dict is the stimulus' URL
-                **{'URL'+str(i+1): stimulus[1]  for i, stimulus in enumerate(page[4])},
-            )
+            {
+                'Page ID'     : page[0],
+                'Part'        : page[1],
+                'Test'        : page[2],
+                'Mode'        : page[3],
+                'VSource'     : EXPERIMENT['Config']['VideoSource'],
+                'VConfig'     : VIDEO_PARAMS,
+                'PageNumber'  : page_number,
+                'PageTotal'   : len(EXPERIMENT[page[1]]),
+                'video_left_folder': video_left_folder, # Añade la carpeta del video izquierdo
+                'video_right_folder': video_right_folder, # Añade la carpeta del video derecho
+            },
+            **{'S'+str(i+1)  : stimulus[0]  for i, stimulus in enumerate(page[4])},
+            **{'URL'+str(i+1): stimulus[1]  for i, stimulus in enumerate(page[4])},
+        )
     else:
         return None
 
@@ -135,30 +139,45 @@ def registerAnswer(answer):
     # Get what is registered in the current page
     print('REGISTERING ANSWER')
     page = page2dict(getCurrentPage())
-    #print(page)
+    timestamp = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
     if page['Mode'] == 'MUSHRA':                                            # Registration for MUSHRA type of page
         part = EXPERIMENT[page['Part']]                                     # Get the part of the experiment
         for test in part:                                                   # Run through the tests of the part
             if test['Config']['Name'] == page['Test']:                      # Checks which test is the current page
-                session['ANSWERS'].append( [ [page['Mode'], page['Part'], page['Test'], page['S'+str(i+1)] , score[1] ] for i, score in enumerate(answer.items())] ) # Add the answer to the session
-                #for i, score in enumerate(answer.items()):                  # Run through the answers (in the order presented to the user)
-                #    test.update({page['S'+str(i+1)]+'_Score' : score[1]})   # Get the stimulus corresponding to the answer and register the score
-                break                                                       # Since the test was found, there is no need to continue the loop
+                # Para MUSHRA, ahora se itera sobre los videos y se agrega la información de cada uno.
+                # Asegúrate de que 'answer' contenga un diccionario con las puntuaciones de cada video
+                for video_key, score in answer.items():
+                    # Extraer el número del video (ej. '1' de 'video1')
+                    video_num = video_key.replace('video', '')
+                    # Obtener el nombre del estímulo usando el número del video
+                    stimulus_name = page['S' + video_num]
+                    session['ANSWERS'].append([session['id'], page['Mode'], page['Part'], page['Test'], stimulus_name, score, timestamp])
+                break                                                       
     
     elif page['Mode'] == 'AB':                                              # Registration for AB type of page
-        part = EXPERIMENT[page['Part']]                                     # Get the part of the experiment
-        for test in part:                                                   # Run through the tests of the part
-            if test['Config']['Name'] == page['Test']:                      # Checks which test is the current page
-                session['ANSWERS'].append([page['Mode'], page['Part'], page['Test'], page['S1'], page['S2'], answer] )
-                break
+        selected_value = answer
+        mapped_value = None # Inicializa mapped_value
+        if selected_value == 'left_clearly_better':
+            mapped_value = -2
+        elif selected_value == 'left_slightly_better':
+            mapped_value = -1
+        elif selected_value == 'both_equal':
+            mapped_value = 0
+        elif selected_value == 'right_slightly_better':
+            mapped_value = 1
+        elif selected_value == 'right_clearly_better':
+            mapped_value = 2
+        else:
+            mapped_value = 'Unknown'
 
-    elif page['Mode'] == 'Single' or page['Mode'] == 'Single_v2':                                              # Registration for AB type of page
-        part = EXPERIMENT[page['Part']]                                     # Get the part of the experiment
-        for test in part:                                                   # Run through the tests of the part
-            if test['Config']['Name'] == page['Test']:                      # Checks which test is the current page
-                session['ANSWERS'].append([page['Mode'], page['Part'], page['Test'], page['S1'], answer] )
-                break
-    session['ANSWERS'][-1].append(datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"))
+        # Extraer el nombre de la carpeta (v5, v7, ref_low, ref_high) de las URLs
+        # Esto asume que la estructura de la URL es "data/carpeta_video/nombre_video.mp4"
+        video_left_folder = os.path.basename(os.path.dirname(page['URL1']))
+        video_right_folder = os.path.basename(os.path.dirname(page['URL2']))
+
+        # AGREGAR ESTA LÍNEA CON LAS VARIABLES video_left_folder y video_right_folder
+        session['ANSWERS'].append([session['id'], page['Mode'], page['Part'], page['Test'], video_left_folder, video_right_folder, mapped_value, timestamp])
+    session.modified = True
     session.modified = True
     logSession()
     printAnswers()
@@ -191,32 +210,60 @@ def loadSession():
         print('error on loadSession: ', e)
         return jsonify({'error on process_answer': str(e)})
 
-
 def printAnswers():
     """
     Print every answer in the session
     """
     for entry in session['ANSWERS']:
         print(entry)
-            
+
 def saveResults():
     """
-    Save the results. Called when the session is finished.
+    Save results to local CSV files.
     """
     printAnswers()
-    # Save the results to a file
-    end = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-    file = "./results/"+session['id']+".csv"
-    with open(file, 'w') as f:
-        f.write(str(START))
-        f.write(',')
-        f.write(str(end))
-        f.write('\n')
-        for entry in session['ANSWERS']:
-            for cell in entry:
-                f.write(str(cell))
-                f.write(',')
-            f.write('\n')
+    save_results_local_csv()
+
+def save_results_local_csv():
+    """
+    Save results to a local CSV file for the current participant.
+    """
+    participant_id = session['id']
+    csv_file_path = f'results/participant_{participant_id}.csv'
+    
+    # Define headers for the CSV
+    headers = ['Participant_ID', 'Mode', 'Part', 'Test', 'Stimulus_or_VideoLeft', 'Score_or_VideoRight', 'Value_or_Timestamp', 'Timestamp_if_AB']
+
+    # Prepare data for CSV
+    csv_data = []
+    for entry in session['ANSWERS']:
+        if entry[1] == 'MUSHRA': # MUSHRA answers
+            csv_data.append([
+                entry[0], # Participant_ID
+                entry[1], # Mode
+                entry[2], # Part
+                entry[3], # Test
+                entry[4], # Stimulus
+                entry[5], # Score
+                entry[6], # Timestamp
+                '' # Empty for AB-specific timestamp
+            ])
+        elif entry[1] == 'AB': # AB answers
+            csv_data.append([
+                entry[0], # Participant_ID
+                entry[1], # Mode
+                entry[2], # Part
+                entry[3], # Test
+                entry[4], # Video_Left
+                entry[5], # Video_Right
+                entry[6], # Score_AB (el valor numérico)
+                entry[7]  # Timestamp
+            ])
+    
+    # Create a DataFrame and save to CSV
+    df = pd.DataFrame(csv_data, columns=headers)
+    df.to_csv(csv_file_path, index=False)
+    print(f"Participant {participant_id} results saved locally at: {csv_file_path}")
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -233,7 +280,6 @@ def index():
     session['SESSION'] = []
     session['RECORDED'] = []
     session['ANSWERS'] = []
-    #printClientSession()
     return render_template("index.html", data={'id': session['id']})
 
 @app.route('/process_answer', methods=['POST'])
@@ -266,11 +312,7 @@ def process_answer():
         
         # The actual experiment should enter here. Every Page in the experiment should pass through this code
         elif 'NextPage' in data:
-
             # Register the answer given the data sent by the client
-            # The data sent by the client is different for each type of page
-            # There is no need to handle this difference here since it is handled in the registerAnswer function
-            # so this should be corrected in the future
             currentPage = page2dict(getCurrentPage())
             if 'videoScores' in data: # If it is a MUSHRA page
                 registerAnswer(data['videoScores'])
@@ -279,18 +321,12 @@ def process_answer():
 
             # Checks the current and the next Page, if they have different modes (types), 
             # redirect to the intro page of the next mode. 
-            # They are not part of the experiment, i.e., they are not listed in the session, that's why they are handled differently
-            # Remove it if you don't have intro pages for each mode or different modes
             currentPage = page2dict(getCurrentPage())
             nextPage = page2dict(checkNextPage())
             if nextPage:
                 if nextPage['Mode'] != currentPage['Mode']:
                     if nextPage['Mode'] == 'AB':
                         return jsonify({'redirect': '\introp2'})
-                    elif nextPage['Mode'] == 'Single_v2':
-                        return jsonify({'redirect': '\introp3'})
-                    elif nextPage['Mode'] == 'Single':
-                        return jsonify({'redirect': '\introp4'})
                     else:
                         print('Error on process_answer: no intro for the next page mode.')
 
@@ -321,10 +357,7 @@ def getURL(page):
         return jsonify({'redirect': url_for('MUSHRA')})
     elif page == 'AB':
         return jsonify({'redirect': url_for('AB')})
-    elif page == 'Single':
-        return jsonify({'redirect': url_for('SINGLE')})
-    elif page == 'Single_v2':
-        return jsonify({'redirect': url_for('SINGLE_v2')})
+    return jsonify({'error': 'Invalid page mode'})
 
 def loadNextPage():
     """
@@ -336,31 +369,29 @@ def loadNextPage():
         return getURL(page['Mode'])
     else: 
         print('No next page found')
-        return None
-
-@app.route('/message')
-def message():
-    return render_template('message.html')
+        return jsonify({'redirect': url_for('end')})
 
 @app.route('/mushra')
 def MUSHRA():
     pagedict = page2dict(getCurrentPage())
-    return render_template('MUSHRA.html', data=pagedict)
+    # Generar dinámicamente los nombres y URLs de los videos
+    videos = []
+    # Itera sobre los estímulos en el orden correcto
+    for i in range(1, 5): # Asumiendo 4 videos para MUSHRA
+        stimulus_key = f'S{i}'
+        url_key = f'URL{i}'
+        if stimulus_key in pagedict and url_key in pagedict:
+            videos.append({
+                'name': pagedict[stimulus_key],
+                'url': pagedict[url_key],
+                'id': i
+            })
+    return render_template('MUSHRA.html', data=pagedict, videos=videos)
 
 @app.route('/ab')
 def AB():
     pagedict = page2dict(getCurrentPage())
     return render_template('AB.html', data=pagedict)
-
-@app.route('/single')
-def SINGLE():
-    pagedict = page2dict(getCurrentPage())
-    return render_template('Single.html', data=pagedict)
-
-@app.route('/single_v2')
-def SINGLE_v2():
-    pagedict = page2dict(getCurrentPage())
-    return render_template('Single_v2.html', data=pagedict)
 
 @app.route('/finished')
 def end():
@@ -373,14 +404,6 @@ def introp1():
 @app.route('/introp2')
 def introp2():
     return render_template('introp2.html')
-
-@app.route('/introp3')
-def introp3():
-    return render_template('introp3.html')
-
-@app.route('/introp4')
-def introp4():
-    return render_template('introp4.html')
 
 def printClientSession(full=True):
     """
@@ -397,6 +420,5 @@ def printClientSession(full=True):
         printAnswers()
     
 # Run the app
-# Some servers require that you delete this if statement    
 if __name__ == '__main__':
     app.run(debug=True)
